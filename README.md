@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FDLN Store – Digital Product Checkout (Next.js + Payment Gateway WBK)
 
-## Getting Started
+Website sederhana untuk penjualan produk digital (contoh: Spotify, YouTube Premium)  
+Menggunakan **Next.js 13/14 (App Router)** dan **integrasi Payment Gateway [WBK](https://pg.wbk.web.id/)** (fitur checkout QRIS/Ewallet otomatis).
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Fitur
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- ✅ Tampilkan produk digital beserta tipe & harga (homepage)
+- ✅ Tombol "Pesan" tiap tipe produk, lanjut ke halaman checkout
+- ✅ Halaman checkout: pilih produk, tipe, email, dan metode pembayaran
+- ✅ Integrasi **Payment Gateway WBK** (QRIS, DANA, OVO, Gopay, ShopeePay)
+- ✅ Bukti/instruksi pembayaran tampil otomatis (scan QR/dst)
+- ✅ Responsive & mudah dikembangkan
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Instalasi & Jalankan
 
-## Learn More
+1. **Clone repo / salin source code:**
+    ```bash
+    git clone [repo-ini]
+    cd [nama-folder]
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Buat file `.env.local` di root project:**
+    ```
+    NEXT_PUBLIC_WBK_APIKEY=isi_apikey_wbk_kamu
+    ```
+    > Ganti dengan APIKEY milikmu dari dashboard WBK!
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Jalankan di mode development:**
+    ```bash
+    npm run dev
+    ```
 
-## Deploy on Vercel
+5. **Akses di browser:**  
+   [http://localhost:3000](http://localhost:3000)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📁 Struktur Folder Utama
+
+src/
+app/
+page.tsx # Homepage daftar produk
+checkout/page.tsx # Halaman checkout
+api/payments/route.ts # API route integrasi payment gateway
+lib/products.ts # Data produk (bisa diganti sesuai kebutuhan)
+components/Navbar.tsx # Navbar custom
+.env.local # Simpan APIKEY WBK
+
+
+---
+
+## ⚡ Catatan Penggunaan
+
+- **Jangan deploy dengan mode `next export`** — gunakan SSR/server (Vercel, Railway, VPS, dsb) agar API route berjalan!
+- Payment Gateway WBK hanya untuk simulasi/testing (real payment, cek dashboard WBK kamu).
+- Untuk keamanan, **jangan hardcode API key di client-side/JS** untuk produksi.
+
+---
+
+## 👨‍💻 Pengembangan Lanjutan
+
+- Tambahkan fitur email notifikasi otomatis ke pembeli.
+- Simpan riwayat transaksi ke database (Supabase/Firebase/dll).
+- Tambahkan testimoni otomatis setelah pembayaran sukses.
+
+---
+
+## 📞 Kontak & Lisensi
+
+Website ini dibuat untuk pembelajaran, tugas, dan demo portofolio.  
+Lisensi: MIT
+
+**Kontributor:**  
+- FDLN Store (fdlnstore.xyz)  
+
+---
